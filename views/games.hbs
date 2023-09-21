@@ -1,0 +1,150 @@
+{{!--
+Citation for the following code:
+Date: 2023/05/24
+Adapted from:
+https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data
+--}}
+
+{{!-- Display table with Games data currently in database --}}
+<div class="table-block">
+    <h2 class="section-title">Games</h2>
+    <br>
+    <table id= "games-table">
+        <thead>
+            {{!-- Each key of the row object serves as a header entry for a column when the page renders --}}
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+
+        <tbody>
+            {{!-- For each row, print the gameID, developerID, title, description and releaseDate, in order --}}
+            {{#each data}}
+            <tr data-value={{this.gameID}}>
+                <td>{{this.gameID}}</td>
+                <td>{{this.developerName}}</td>
+                <td>{{this.title}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.releaseDate}}</td>
+                <td><button onclick="deleteGame({{this.gameID}})">Delete</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <br>
+    <script src="./js/delete_game.js"></script>
+</div>
+
+
+{{!--
+Citation for the following code:
+Date: 2023/05/24
+Adapted from:
+https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
+--}}
+{{!-- Adding a game --}}
+<div class="table-block">
+    <h2 class="section-title">Add a Game</h2>
+    <p class="section-description">To add a game, please enter its information below and click 'Add Game'</p>
+    <table class="add_update_tables">
+        <tbody>
+            <tr>
+                <td>
+                    <form id="add-game-form-ajax">
+                    <label for="input-developerID">Developer Name: </label>
+                    {{!-- displays developer name instead of developer ID, for better usability --}}
+                    <select name="input-developerID" id="input-developerID">
+                        <option value="">Select a Developer</option>
+                        {{#each developers}}
+                        <option value="{{this.developerID}}">{{this.developerName}}</option>
+                        {{/each}} 
+                    </select>
+                </td>
+                <td>
+                    <label for="input-title">Title: </label>
+                    <input type="text" name="input-title" id="input-title">
+                </td>
+                <td>
+                    <label for="input-description">Description: </label>
+                    <input type="text" name="input-description" id="input-description">
+                </td>
+                <td>
+                    <label for="input-releaseDate">Release Date: </label>
+                    <input type="date" name="input-releaseDate" id="input-releaseDate">
+                </td>
+                <td>
+                    <input type="submit" value="Add Game">
+                </td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+{{!-- Script handles DOM manipulation and AJAX request --}}
+<script src="./js/add_game.js"></script>
+
+
+{{!--
+Citation for the following code:
+Date: 2023/05/24
+Adapted from:
+https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
+--}}
+{{!-- Updating a Game --}}
+<div class="table-block">
+    <h2 class="section-title">Update a Game's Information</h2>
+    <p class="section-description">Select the Game from the drop-down menu, amend its details, and click 'Update Game'</p>
+    <table class="add_update_tables">
+        <tbody>
+            <tr>
+                <td>
+                    <form id="update-game-form-ajax">
+                    <label for="input-title">Game Title: </label>
+                    <select name="input-title" id="mySelect">
+                        <option value="">Select a Title</option>
+                        {{#each data}}
+                        <option value="{{this.gameID}}">{{this.title}}</option>
+                        {{/each}} 
+                    </select>
+                </td>
+                <td>
+                     <label for="input-developerID">Developer: </label>
+                    <select name="input-developerID" id="input-developerID-update">
+                        <option value="">Select a Developer</option>
+                        {{#each developers}}
+                        <option value="{{this.developerID}}">{{this.developerName}}</option>
+                        {{/each}} 
+                    </select>
+                </td>
+                <td>
+                    <label for="input-title">Title: </label> 
+                    <input type="text" name="input-title" id="input-title-update">                
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="input-description">Description: </label>
+                    <input type="text" name="input-description" id="input-description-update">
+                </td>
+                <td>
+                    <label for="input-releaseDate">Release Date: </label>
+                    <input type="date" name="input-releaseDate" id="input-releaseDate-update">
+                </td>
+                <td>
+                    <input type="submit" value="Update Game">
+                </td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<script src="./js/update_game.js"></script>

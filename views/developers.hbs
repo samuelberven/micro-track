@@ -1,0 +1,174 @@
+{{!--
+Citation for the following code:
+Date: 2023/05/24
+Adapted from:
+https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data
+--}}
+
+{{!-- Display table with data currently in database --}}
+<div class="table-block">
+    <h2 class="section-title">Developers</h2>
+    <br>
+    <table id="developers-table">
+        <thead>
+            {{!-- Each key of the row object serves as a header entry for a column when the page renders --}}
+            <tr>
+                {{#each data.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+
+        <tbody>
+            {{!-- For each row, prints developerID, developerName, address, city, state, zipCode, email and contact, in order --}}
+            {{#each data}}
+            <tr data-value={{this.developerID}}>
+                <td>{{this.developerID}}</td>
+                <td>{{this.developerName}}</td>
+                <td>{{this.address}}</td>
+                <td>{{this.city}}</td>
+                <td>{{this.state}}</td>
+                <td>{{this.zipCode}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.contact}}</td>
+                <td><button onclick="deleteDeveloper({{this.developerID}})">Delete</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <br>
+{{!-- Script handles DOM manipulation and AJAX request --}}
+    <script src="./js/delete_developer.js"></script>
+</div>
+
+
+{{!--
+Citation for the following code:
+Date: 2023/05/24
+Adapted from:
+https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
+--}}
+{{!-- Adding a developer --}}
+<div class="table-block">
+    <h2 class="section-title">Add a Developer</h2>
+    <p class="section-description">To add a Customer, please enter its information below and click 'Add Developer'</p>
+    <table class="add_update_tables">
+        <tbody>
+            <tr>
+                <td>
+                    <form id="add-developer-form-ajax">
+                    <label for="input-developerName">Developer Name: </label>
+                    <input type="text" name="input-developerName" id="input-developerName" required>
+                </td>
+                <td>
+                    <label for="input-address">Address: </label>
+                    <input type="text" name="input-address" id="input-address" required>
+                </td>
+                <td>
+                    <label for="input-city">City: </labe>
+                    <input type="text" name="input-city" id="input-city" required>
+                </td>
+                <td>
+                    <label for="input-state">State: </label>
+                    <input type="text" name="input-state" id="input-state" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="input-zipCode">Zip Code: </label>
+                    <input type="number" name="input-zipCode" id="input-zipCode" required>
+                </td>
+                <td>
+                    <label for="input-email">Email: </label>
+                    <input type="text" name="input-email" id="input-email" required>
+                </td>
+                <td>
+                    <label for="input-contact">Contact: </label>
+                    <input type="text" name="input-contact" id="input-contact" required>
+                </td>
+                <td>
+                    <input type="submit" value="Add Developer">
+                </td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+{{!-- Script handles DOM manipulation and AJAX request --}}
+<script src="./js/add_developer.js"></script>
+
+
+{{!--
+Citation for the following code:
+Date: 2023/05/24
+Adapted from:
+https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
+--}}
+{{!-- Updating a Developer --}}
+<div class="table-block">
+    <h2 class="section-title">Update a Developer's Information</h2>
+    <p class="section-description">Select the Developer from the drop-down menu, amend its details, and click 'Update Developer'</p>
+
+    <table class="add_update_tables">
+        <tbody>            
+            <tr>
+                <td>
+                    <form id="update-developer-form-ajax">
+                        <label for="input-developerName">Current Developer Name: </label>
+                        <select name="input-developerName" id="mySelect" required>
+                            <option value="test">Select a Developer</option>
+                            {{#each data}}
+                            <option value="{{this.developerID}}">{{this.developerName}}</option>
+                            {{/each}}
+                        </select>
+                </td>
+                <td>
+                        <label for="input-developerName">New Developer Name: </label>
+                        <input type="text" name="input-developerName" id="input-developerName-update" required>
+                </td>
+                <td>
+                        <label for="input-address">Address: </label>
+                        <input type="text" name="input-address" id="input-address-update" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <label for="input-city">City: </label>
+                        <input type="text" name="input-city" id="input-city-update" required>
+                </td>
+                <td>
+                        <label for="input-state">State: </label>
+                        <input type="text" name="input-state" id="input-state-update" required>
+                </td>
+                <td>
+                        <label for="input-zipCode">Zip Code: </label>
+                        <input type="number" name="input-zipCode" id="input-zipCode-update" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <label for="input-email">Email: </label>
+                        <input type="text" name="input-email" id="input-email-update" required>
+                </td>
+                <td>
+                        <label for="input-contact">Contact: </label>
+                        <input type="text" name="input-contact" id="input-contact-update" required>
+                </td>
+                <td>
+                        <input type="submit" value="Update Developer">
+                        <br>
+                </td>
+            </tr>
+            </form>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+{{!-- Script handles DOM manipulation and AJAX request --}}
+<script src="./js/update_developer.js"></script>

@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-flash": "^0.0.2",
+    "express-handlebars": "^7.0.7",
+    "express-session": "^1.17.3",
+    "forever": "^4.0.3",
+    "mysql": "^2.18.1"
+  },
+  "name": "gotcha_games",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Samuel Berven, Robert Brumleve",
+  "license": "ISC",
+  "description": "-------------------------------------------------------------------------------\r | TODO (Developer selects and moves to their CURRENT TASK location)             |\r  -------------------------------------------------------------------------------\r     - Run forever command from FLIP server [ alias forever='./node_modules/forever/bin/forever' ]\r     - Customers > CREATE/INSERT, READ/SELECT, UPDATE/UPDATE, DELETE/DELETE\r     - ServicePlatforms > CREATE/INSERT, READ/SELECT\r     - Customer_has_Games > CREATE/INSERT, READ/SELECT, DELETE/DELETE\r     - Microtransactions > CREATE/INSERT, READ/SELECT, DELETE/DELETE\r     - Developers > CREATE/INSERT, READ/SELECT, DELETE/DELETE \r     - Purchases  > CREATE/INSERT, READ/SELECT, DELETE/DELETE \r     - CSS styling \r     - HTML layout design",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sber-sber/Gotcha-Games.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sber-sber/Gotcha-Games/issues"
+  },
+  "homepage": "https://github.com/sber-sber/Gotcha-Games#readme"
+}
