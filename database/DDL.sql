@@ -1,5 +1,3 @@
--- CS340 Spring 2023 Portfolio Project final delivery - Group 72, Project: Gotcha Games
-
 SET FOREIGN_KEY_CHECKS=0;
 SET AUTOCOMMIT = 0;
 
