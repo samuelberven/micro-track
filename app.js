@@ -1,12 +1,3 @@
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
-*/
-
 // Express
 var express = require('express');
 var app     = express();
@@ -14,13 +5,6 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
 PORT        = 21958;
-
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Copied from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%203%20-%20Integrating%20a%20Templating%20Engine%20(Handlebars)
-*/
 
 // Imports express-handlebars and creates an instance of the handlebars engine to process templates
 const { engine } = require('express-handlebars');
@@ -61,13 +45,7 @@ app.get('/', function(req, res)
 /***************************************
             Games ROUTES
 ***************************************/
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-    https://www.w3schools.com/sql/func_mysql_date_format.asp
-*/
+
 
 // Games READ route
 app.get('/games', function(req, res)
@@ -98,13 +76,6 @@ app.get('/games', function(req, res)
     });
 });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
-    https://www.w3schools.com/sql/func_mysql_date_format.asp
-*/
 // Games CREATE route
 app.post('/add-game-ajax', function(req, res) 
     {
@@ -151,12 +122,7 @@ app.post('/add-game-ajax', function(req, res)
         })
     });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data
-*/
+
 // Games DELETE route
 app.delete('/delete-game-ajax/', function(req,res,next){
     let data = req.body;
@@ -188,13 +154,6 @@ app.delete('/delete-game-ajax/', function(req,res,next){
               }
   })});
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
-    https://www.w3schools.com/sql/func_mysql_date_format.asp
-*/
 // Games UPDATE route
 app.put('/put-game-ajax', function(req,res,next){
     let data = req.body;  
@@ -227,12 +186,7 @@ app.put('/put-game-ajax', function(req,res,next){
 /***************************************
         Microtransactions ROUTES
 ***************************************/
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-*/
+
 // Microtransactions READ route
 app.get('/microtransactions', function(req, res)
   {  
@@ -257,12 +211,6 @@ app.get('/microtransactions', function(req, res)
 
 });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
-*/
 // Microtransactions CREATE route
 app.post('/add-microtransaction-ajax', function(req, res) 
     {
@@ -310,12 +258,6 @@ app.post('/add-microtransaction-ajax', function(req, res)
         })
     });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data
-*/
 // Microtransactions DELETE route
 app.delete('/delete-microtransaction-ajax/', function(req,res,next){
     let data = req.body;
@@ -338,13 +280,7 @@ app.delete('/delete-microtransaction-ajax/', function(req,res,next){
 /***************************************
             Purchases ROUTES
 ***************************************/
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-    https://www.w3schools.com/sql/func_mysql_date_format.asp
-*/
+
 // Purchases READ route
 app.get('/purchases', function(req, res)
   {
@@ -380,13 +316,6 @@ app.get('/purchases', function(req, res)
   });
 });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
-    https://www.w3schools.com/sql/func_mysql_date_format.asp
-*/
 // Purchases CREATE route
 app.post('/add-purchase-ajax', function(req, res) 
     {
@@ -434,12 +363,6 @@ app.post('/add-purchase-ajax', function(req, res)
         })
     });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data
-*/
 // Purchases DELETE route
 app.delete('/delete-purchase-ajax/', function(req,res,next){
     let data = req.body;
@@ -458,13 +381,6 @@ app.delete('/delete-purchase-ajax/', function(req,res,next){
             });
         });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
-    https://www.w3schools.com/sql/func_mysql_date_format.asp
-*/
 app.put('/put-purchase-ajax', function(req,res,next){
     // Get response
     let data = req.body;
@@ -519,12 +435,7 @@ app.put('/put-purchase-ajax', function(req,res,next){
 /***************************************
             Customers ROUTES
 ***************************************/
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-*/
+
 // Customers READ route
 app.get('/customers', function(req, res)
 {  
@@ -552,12 +463,6 @@ app.get('/customers', function(req, res)
     });
 });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
-*/
 // Customers CREATE route
 app.post('/add-customer-ajax', function(req, res) 
     {
@@ -612,12 +517,6 @@ app.post('/add-customer-ajax', function(req, res)
         })
     });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data
-*/
 // Customers DELETE route
 app.delete('/delete-customer-ajax/', function(req,res,next){
     let data = req.body;
@@ -645,12 +544,6 @@ app.delete('/delete-customer-ajax/', function(req,res,next){
         }
     })});
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
-*/
 // Customers UPDATE route 
 app.put('/put-customer-ajax', function(req,res,next){
     // Get response
@@ -688,12 +581,7 @@ app.put('/put-customer-ajax', function(req,res,next){
 /***************************************
         ServicePlatforms ROUTES
 ***************************************/
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-*/
+
 // ServicePlatforms READ route
 app.get('/service-platforms', function(req, res)
 {  
@@ -704,12 +592,6 @@ app.get('/service-platforms', function(req, res)
     });
 });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
-*/
 // ServicePlatforms CREATE route
 app.post('/add-service-platform-ajax', function(req, res) 
     {
@@ -760,12 +642,6 @@ app.post('/add-service-platform-ajax', function(req, res)
         })
     });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data
-*/
 // ServicePlatforms DELETE route
 app.delete('/delete-service-platform-ajax/', function(req,res,next){
     let data = req.body;
@@ -788,13 +664,7 @@ app.delete('/delete-service-platform-ajax/', function(req,res,next){
 /***************************************
         CustomersHaveGames ROUTES
 ***************************************/
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-    https://www.w3schools.com/sql/func_mysql_date_format.asp
-*/
+
 // CustomersHaveGames READ route
 app.get('/customers-have-games', function(req, res)
 // {  
@@ -833,13 +703,6 @@ app.get('/customers-have-games', function(req, res)
 });
 });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
-    https://www.w3schools.com/sql/func_mysql_date_format.asp
-*/
 // CustomersHaveGames CREATE route
 app.post('/add-customers-have-games-ajax', function(req, res) 
     {
@@ -887,13 +750,6 @@ app.post('/add-customers-have-games-ajax', function(req, res)
             })
     });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
-    https://www.w3schools.com/sql/func_mysql_date_format.asp
-*/
 // Customers_Have_Games UPDATE route
 app.put('/put-customers-have-games-ajax', function(req,res,next){
     // Get response
@@ -927,12 +783,6 @@ app.put('/put-customers-have-games-ajax', function(req,res,next){
     });
 });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data
-*/
 // Customers_Have_Games DELETE route
 app.delete('/delete-customers-have-games-ajax/', function(req,res,next){
     let data = req.body;
@@ -955,12 +805,7 @@ app.delete('/delete-customers-have-games-ajax/', function(req,res,next){
 /***************************************
             Developers ROUTES
 ***************************************/
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
-*/
+
 // Developers READ route
 app.get('/developers', function(req, res)
     {  
@@ -972,12 +817,6 @@ app.get('/developers', function(req, res)
         })                                           // an object where 'data' is equal to the 'rows' 
     });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
-*/
 // Developers CREATE route
 app.post('/add-developer-ajax', function(req, res) 
     {
@@ -1020,12 +859,6 @@ app.post('/add-developer-ajax', function(req, res)
         })
     });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%207%20-%20Dynamically%20Deleting%20Data
-*/
 // Developers DELETE route
 app.delete('/delete-developer-ajax/', function(req,res,next){
     let data = req.body;
@@ -1044,12 +877,6 @@ app.delete('/delete-developer-ajax/', function(req,res,next){
             });
         });
 
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
-*/
 // Developers UPDATE route
 app.put('/put-developer-ajax', function(req,res,next){
     // Get response
@@ -1086,6 +913,6 @@ app.put('/put-developer-ajax', function(req,res,next){
 /*
     LISTENER
 */
-app.listen(PORT, function(){            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
+app.listen(PORT, function(){
     console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
 });

@@ -1,10 +1,5 @@
 /* Standard */
-/*
-    Citation for the following code:
-    Date: 2023/05/23
-    Based partly on:
-    https://stackoverflow.com/questions/28128400/keep-footer-at-the-bottom-of-the-page-with-scrolling-if-needed 
-*/
+
 #footer {
   background-color: rgb(255, 255, 255);
   color: #000000;

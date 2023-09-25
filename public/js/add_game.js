@@ -1,10 +1,3 @@
-/*
-    Citation for the following code:
-    Date: 2023/05/24
-    Adapted from:
-    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
-*/
-
 // Gets object
 let addGameForm = document.getElementById('add-game-form-ajax');
 

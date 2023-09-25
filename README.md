@@ -13,10 +13,6 @@ would in turn result in a greater ability for Gotcha Games to maximize its profi
 A customer’s Google/Apple username is used for a transaction. The date for each
 transaction is recorded to give Gotcha Games the ability to analyze the days and
 months that sales are significantly stronger or weaker.
+ *************************************
 
- ***************************************
-Citations:
-- All code is based on the CS340 starter code, with the exception of index.hbs, style.css. 
-We had additional JS scripts in our early Step submissions, but ultimately decided to remove them.
-- Several elements of our style.css code (persistent header, etc.) were based at least partially on outside sources; we have credited these sources in the style.css file.
-
+ 

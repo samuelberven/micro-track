@@ -1,8 +1,3 @@
-//    Citation for the following code:
-//    Date: 2023/05/24
-//    Adapted from:
-//    https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
-
 // Get the objects we need to modify
 let updateDeveloperForm = document.getElementById('update-developer-form-ajax');
 
