@@ -1,4 +1,5 @@
 Project Outline:
+
 The publisher Gotcha Games earns $100 million in in-game microtransactions
 annually, occurring in 8 games (developed by 4 developers). The price of their in-game
 transactions range from $0.99 to $99.99.
