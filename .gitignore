@@ -1,3 +1,5 @@
 /node_modules/
 /.vscode/
-db_connector.js
+database-connector.js
+/database/database-connector.js
+.env

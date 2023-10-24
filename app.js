@@ -4,7 +4,7 @@ var app     = express();
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
-PORT        = 21958;
+PORT        = 21952;
 
 // Imports express-handlebars and creates an instance of the handlebars engine to process templates
 const { engine } = require('express-handlebars');
@@ -14,7 +14,7 @@ app.engine('.hbs', engine({extname: ".hbs"}));
 app.set('view engine', '.hbs');                 
 
 // Database
-var db = require('./database/db-connector')
+var db = require('./database/database-connector')
 
 
 /*
