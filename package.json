@@ -7,8 +7,10 @@
     "express-handlebars": "^7.0.7",
     "express-session": "^1.17.3",
     "forever": "^4.0.3",
+    "mariadb": "^3.2.2",
     "mysql": "^2.18.1",
-    "mysql2": "^3.6.1"
+    "mysql2": "^3.6.1",
+    "npm": "^10.2.1"
   },
   "name": "gotcha_games",
   "version": "1.0.0",
