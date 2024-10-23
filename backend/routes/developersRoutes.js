@@ -1,9 +1,14 @@
-  /***************************************
+import supabase from "../config/supabaseClient.js"; // Correct import path
+import express from "express";
+
+const router = express.Router();
+
+/***************************************
               Developers ROUTES
   ***************************************/
   
  // Developers READ route
-app.get("/api/developers", async (req, res) => {
+router.get("/", async (req, res) => {
   const { data, error } = await supabase
       .from("developers")
       .select("*");
@@ -16,8 +21,22 @@ app.get("/api/developers", async (req, res) => {
   res.render("developers", { data });
 });
   
-  // Developers CREATE route
-  app.post("/add-developer-ajax", function (req, res) {
+// Get developer by ID route NOTE: check that this works
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  const { data, error } = await supabase.from("developers").select("*").eq("id", id).single();
+
+  if (error) return res.status(400).send("Error fetching developer");
+  if (!data) return res.status(404).send("Developer not found");
+
+  res.json(data); // Returns the developer data as JSON
+});
+
+
+
+
+// Developers CREATE route
+router.post("/add-developer-ajax", function (req, res) {
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
   
@@ -51,7 +70,7 @@ app.get("/api/developers", async (req, res) => {
   });
   
   // Developers DELETE route
-  app.delete("/delete-developer-ajax/", function (req, res, next) {
+  router.delete("/delete-developer-ajax/", function (req, res, next) {
     let data = req.body;
     let developerID = parseInt(data.id);
     let deleteDeveloper = `DELETE FROM Developers WHERE developerID = ?`;
@@ -68,7 +87,7 @@ app.get("/api/developers", async (req, res) => {
   });
   
   // Developers UPDATE route
-  app.put("/put-developer-ajax", function (req, res, next) {
+  router.put("/put-developer-ajax", function (req, res, next) {
     // Get response
     let data = req.body;
   
@@ -103,3 +122,6 @@ app.get("/api/developers", async (req, res) => {
   
     res.send(updatedData);
   });
+
+  export default router;
+  
