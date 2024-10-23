@@ -1,5 +1,9 @@
-/node_modules/
+node_modules/
+dist/
 /.vscode/
 database-connector.js
 /database/database-connector.js
 .env
+.env.server
+.env.frontend
+.eslintcache
