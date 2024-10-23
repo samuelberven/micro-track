@@ -1,20 +1,68 @@
-// Express
-var express = require("express");
-var app = express();
+
+import express from "express";
+import { engine } from "express-handlebars";
+import supabase from "./config/supabaseClient.js";
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-PORT = 21952;
 
-// Imports express-handlebars and creates an instance of the handlebars engine to process templates
-const { engine } = require("express-handlebars");
-var exphbs = require("express-handlebars");
 app.engine(".hbs", engine({ extname: ".hbs" }));
-// Uses handlebars engine whenever a *.hbs file is encountered.
 app.set("view engine", ".hbs");
 
-// Database
-var db = require("./database/database-connector");
+
+
+
+
+
+
+// Render all games
+app.get("/api/games", async (req, res) => {
+  const { data, error } = await supabase.from("games").select("*");
+
+  // Log the fetched games data
+  console.log("Fetched games:", data);
+
+  if (error) {
+    return res.status(400).send("Error fetching games");
+  }
+
+  res.render("games", { data });
+});
+
+// Render a single game by ID
+app.get("/api/games/:id", async (req, res) => {
+  const { id } = req.params;
+  const { data, error } = await supabase
+    .from("games")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) return res.status(400).send("Error fetching game");
+  // Returns data with single selected game
+  res.json(data)
+
+  // res.render("gameDetail", { game: data });
+});
+
+// Create a new game (form submission)
+app.post("/games", async (req, res) => {
+  const { name, releaseDate } = req.body;
+  const { error } = await supabase
+    .from("games")
+    .insert([{ name, release_date: releaseDate }]);
+
+  if (error) return res.status(400).send("Error creating game");
+
+  res.redirect("/games");
+});
+
+
+
 
 /*
     ROUTES
@@ -777,15 +825,20 @@ app.delete("/delete-customers-have-games-ajax/", function (req, res, next) {
 ***************************************/
 
 // Developers READ route
-app.get("/developers", function (req, res) {
-  let query1 = "SELECT * FROM Developers;"; // Define our query
+app.get("/api/developers", async (req, res) => {
+  const { data, error } = await supabase
+      .from("developers")
+      .select("*");
 
-  db.pool.query(query1, function (error, rows, fields) {
-    // Execute the query
+  if (error) {
+    return res.status(400).send("Error fetching developers");
+  }
 
-    res.render("developers", { data: rows }); // Render the index.hbs file, and also send the renderer
-  }); // an object where 'data' is equal to the 'rows'
+  // Render the developers view with the retrieved data
+  res.render("developers", { data });
 });
+
+
 
 // Developers CREATE route
 app.post("/add-developer-ajax", function (req, res) {
@@ -820,6 +873,10 @@ app.post("/add-developer-ajax", function (req, res) {
     }
   });
 });
+
+
+
+
 
 // Developers DELETE route
 app.delete("/delete-developer-ajax/", function (req, res, next) {

@@ -1,42 +1,43 @@
-{{!-- Display table with data currently in database --}}
 <div class="table-block">
     <h2 class="section-title">Developers</h2>
     <br>
     <table id="developers-table">
         <thead>
-            {{!-- Each key of the row object serves as a header entry for a column when the page renders --}}
             <tr>
-                {{#each data.[0]}}
-                <th>
-                    {{@key}}
-                </th>
-                {{/each}}
+                <th>Developer ID</th>
+                <th>Developer Name</th>
+                <th>Street Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip Code</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Actions</th>
             </tr>
         </thead>
-
         <tbody>
-            {{!-- For each row, prints developerID, developerName, address, city, state, zipCode, email and contact, in order --}}
             {{#each data}}
-            <tr data-value={{this.developerID}}>
-                <td>{{this.developerID}}</td>
-                <td>{{this.developerName}}</td>
-                <td>{{this.address}}</td>
+            <tr data-value="{{this.id}}">
+                <td>{{this.id}}</td>
+                <td>{{this.developer_name}}</td>
+                <td>{{this.street_address}}</td>
                 <td>{{this.city}}</td>
                 <td>{{this.state}}</td>
-                <td>{{this.zipCode}}</td>
+                <td>{{this.zipcode}}</td>
                 <td>{{this.email}}</td>
                 <td>{{this.contact}}</td>
-                <td><button onclick="deleteDeveloper({{this.developerID}})">Delete</button></td>
+                <td><button onclick="deleteDeveloper({{this.id}})">Delete</button></td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="9">No developers found.</td>
             </tr>
             {{/each}}
         </tbody>
     </table>
     <br>
-{{!-- Script handles DOM manipulation and AJAX request --}}
     <script src="./js/delete_developer.js"></script>
 </div>
-
-
 
 {{!-- Adding a developer --}}
 <div class="table-block">
