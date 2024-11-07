@@ -1,10 +1,9 @@
-# Gotcha Games - Microtransaction Tracking and Analysis Platform
+# Microtransaction Insights - Tracking and Analysis Platform
 
 ### Project Overview
 
-**Gotcha Games** is a service designed to help gaming companies efficiently track, analyze, and optimize in-game microtransactions across multiple games. As companies like Gotcha Games earn significant revenue from microtransactions, it's essential to have a robust system that helps identify revenue patterns, performance metrics, and areas for improvement.
-
-This application provides an intuitive interface for tracking sales data across different games, developers, regions, and time periods. By leveraging real-time transaction data, companies can maximize profits, identify trends, and improve business strategies.
+**Microtransaction Insights** is a project designed to help gaming companies efficiently track, analyze, and optimize in-game microtransactions across multiple games. As microtransactions generate significant revenue for game developers and publishers, it's crucial to have a robust system that can identify revenue patterns, track performance metrics, and highlight areas for improvement.
+The application provides an intuitive interface for tracking sales data across various games, developers, regions, and time periods. By leveraging real-time transaction data, it enables companies to maximize profits, identify emerging trends, and refine their business strategies.
 
 ### Key Features:
 - **Multi-game and multi-developer support:** Manage microtransactions from multiple games and developers in one platform.
@@ -62,7 +61,7 @@ To get the project up and running locally, follow these steps:
 
 1. **Clone the repository:**
   ```bash
-  git clone https://github.com/your-username/gotcha-games-vanilla-js.git
+  git clone https://github.com/your-username/microtransaction-insights.git
   cd gotcha-games
   ```
 2. Install dependencies:
