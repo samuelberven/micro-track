@@ -101,6 +101,20 @@ To get the project up and running locally, follow these steps:
     docker ps -a  
   ```
 
+3. Shut down db volumes (persistent data)
+  ```bash
+    docker-compose down -v
+  ```
+
+4. List running Docker containers
+  ```Bash
+    docker ps
+  ```
+
+5. List all Docker containers (including stopped)
+  ```Bash
+    docker ps -a
+  ```
 
 
 <!-- 4. Run the application locally:
