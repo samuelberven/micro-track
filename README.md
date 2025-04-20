@@ -91,6 +91,17 @@ To get the project up and running locally, follow these steps:
   ```
 
 
+# Docker cheat sheet
+1. Run in detached mode (goes back to parent terminal)
+  ```bash
+    docker-compose up -d
+  ```
+2. Check running containers (useful when using detached mode)
+  ```bash
+    docker ps -a  
+  ```
+
+
 
 <!-- 4. Run the application locally:
   ```bash

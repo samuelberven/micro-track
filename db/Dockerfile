@@ -1,2 +1,2 @@
 # Use the latest MySQL image
-FROM mysql:latest
+FROM mysql:8.4
