@@ -1,9 +1,10 @@
---
--- Add example data to the database
---
+-- Seed example data to the Gotcha Games app's gotcha_games database
 
 SET FOREIGN_KEY_CHECKS=0;
 SET AUTOCOMMIT = 0;
+
+-- Select the correct database
+USE gotcha_games;
 
 -- Service Platforms Data
 INSERT INTO ServicePlatforms (platformName)
@@ -90,3 +91,94 @@ INSERT INTO Customers (
     servicePlatformID,
     email
 )
+VALUES
+(
+    'john2k',
+    (SELECT servicePlatformID FROM ServicePlatforms WHERE platformName = 'Apple'),
+    'johnnytwokay@gmail.com'
+), (
+    'jacobs2k',
+    (SELECT servicePlatformID FROM ServicePlatforms WHERE platformName = 'Apple'),
+    'jakejake@hotmail.com'
+), (
+    'jingleheimer2k',
+    (SELECT servicePlatformID FROM ServicePlatforms WHERE platformName = 'Google'),
+    'jingles@gmail.com'
+), (
+    'schmidt2k',
+    (SELECT servicePlatformID FROM ServicePlatforms WHERE platformName = 'Google'),
+    'schmiddybear1990@yahoo.com'
+);
+
+-- CustomersHaveGames Data
+INSERT INTO CustomersHaveGames (
+    customerID,
+    gameID,
+    installDate
+)
+VALUES
+(1, 1, '2019-07-12'),
+(1, 2, '2020-01-14'),
+(2, 2, '2020-01-14'),
+(3, 2, '2020-01-14'),
+(1, 3, '2021-02-02'),
+(3, 3, '2021-02-02'),
+(4, 4, '2021-11-29'),
+(1, 4, '2021-11-29');
+
+-- Microtransactions Data
+INSERT INTO Microtransactions (
+    gameID,
+    price,
+    description
+)
+VALUES
+(1, 0.99, '100 diamonds'),
+(1, 9.99, '1500 diamonds'),
+(1, 99.99, '20000 diamonds'),
+(2, 2.99, 'Hero skin - Gold Knight'),
+(2, 2.99, 'Hero skin - Skull Mage'),
+(2, 2.99, 'Hero skin - Spec OPS'),
+(3, 9.99, 'No ads'),
+(4, 4.99, '777 diamonds'),
+(4, 47.99, '7777 diamonds');
+
+-- Purchases Data
+INSERT INTO Purchases (
+    customerID,
+    microtransactionID,
+    date
+)
+VALUES
+(
+    (SELECT customerID FROM Customers WHERE username = 'john2k'),
+    2,
+    '2019-08-11'
+), (
+    (SELECT customerID FROM Customers WHERE username = 'john2k'),
+    3,
+    '2019-10-30'
+), (
+    (SELECT customerID FROM Customers WHERE username = 'john2k'),
+    3,
+    '2019-10-30'
+), (
+    (SELECT customerID FROM Customers WHERE username = 'jacobs2k'),
+    5,
+    '2020-03-01'
+), (
+    (SELECT customerID FROM Customers WHERE username = 'jingleheimer2k'),
+    6,
+    '2020-04-12'
+), (
+    (SELECT customerID FROM Customers WHERE username = 'schmidt2k'),
+    7,
+    '2021-02-05'
+), (
+    (SELECT customerID FROM Customers WHERE username = 'john2k'),
+    9,
+    '2021-12-06'
+);
+
+SET FOREIGN_KEY_CHECKS=1;
+COMMIT;
