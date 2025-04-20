@@ -127,7 +127,7 @@ VALUES
 (1, 4, '2021-11-29');
 
 -- microtransactions data
- INTO microtransactions (
+INSERT INTO microtransactions (
     game_id,
     microtransaction_name,
     price,

@@ -61,20 +61,42 @@ To get the project up and running locally, follow these steps:
 
 1. **Clone the repository:**
   ```bash
-  git clone https://github.com/your-username/microtransaction-insights.git
+  git clone https://github.com/samuelberven/microtransaction-insights.git
   cd gotcha-games
   ```
-2. Install dependencies:
+2. Install dependencies and typescript:
   ```bash
-  npm install
+  npm install --save-dev typescript ts-node @types/node
   ```
 3. Setup PostgreSQL Database:
 - Create a PostgreSQL database (e.g., gotcha_games_db) and update the .env file with your database connection details.
-4. Run the application locally:
+4. Generate tsconfig.json:
+  ```bash
+  npx tsc --init 
+  ```
+
+4. Generate tsconfig.json:
+  ```bash
+  npx tsc --init 
+  ```
+
+5. Run tsc compliler
+  ```bash
+    npx tsc
+  ```
+
+5. Run the app
+  ```bash
+    node dist/index.js
+  ```
+
+
+
+<!-- 4. Run the application locally:
   ```bash
   npm start
-  ```
-5. Visit the app in your browser: Open http://localhost:3000 to interact with the app.
+  ``` -->
+<!-- 5. Visit the app in your browser: Open http://localhost:3000 to interact with the app. -->
 
 ## How to Contribute:
 1. Fork the repository
