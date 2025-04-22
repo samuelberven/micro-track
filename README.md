@@ -90,33 +90,6 @@ To get the project up and running locally, follow these steps:
     node dist/index.js
   ```
 
-
-# Docker cheat sheet
-1. Run in detached mode (goes back to parent terminal)
-  ```bash
-    docker-compose up -d
-  ```
-2. Check running containers (useful when using detached mode)
-  ```bash
-    docker ps -a  
-  ```
-
-3. Shut down db volumes (persistent data)
-  ```bash
-    docker-compose down -v
-  ```
-
-4. List running Docker containers
-  ```Bash
-    docker ps
-  ```
-
-5. List all Docker containers (including stopped)
-  ```Bash
-    docker ps -a
-  ```
-
-
 <!-- 4. Run the application locally:
   ```bash
   npm start

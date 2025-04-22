@@ -12,4 +12,6 @@ database-connector.js
 .env.frontend
 .eslintcache
 
+# Personal dev notes file
+DEV_NOTE.md
 
