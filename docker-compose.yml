@@ -27,19 +27,35 @@ services:
       start_period: 20s
 
 
-  server:
-    build: ./server
-    container_name: backend
-    depends_on:
-      db:
-        condition: service_healthy
-    env_file: ./server/.env.server
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: backend-app
     ports:
       - "3000:3000"
     volumes:
-      - ./server:/app
-      - /app/node_modules
-    command: ["npm", "run", "start"]
+      - ./server/src:/app/src
+    env_file:
+      - ./server/.env.server
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # server:
+  #   build: ./server
+  #   container_name: backend
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  #   env_file: ./server/.env.server
+  #   ports:
+  #     - "3000:3000"
+  #   command: ["node", "dist/index.js"]
+
+
+
+
 
   # frontend:
   #   build: ./frontend

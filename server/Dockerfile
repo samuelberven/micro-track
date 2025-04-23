@@ -1,31 +1,23 @@
-FROM node:18 AS builder
+# Use the official Node.js image
+FROM node:18
 
+# Set the working directory inside the container
 WORKDIR /app
-COPY package.json package-lock.json ./
+
+# Copy only dependency files and tsconfig.json first
+COPY package*.json tsconfig.json ./
+
+# Install dependencies
 RUN npm install
+
+# Copy the rest of the source code
 COPY . .
-RUN npm run build  # Compiles TypeScript
 
-FROM node:18-alpine AS runtime
+# Compile TypeScript directly (this creates the dist/ folder with compiled code)
+RUN npx tsc --project tsconfig.json && ls -l /app/dist
 
-WORKDIR /app
-COPY --from=builder /app/dist /app/dist
-COPY --from=builder /app/package.json /app/package.json
-COPY --from=builder /app/node_modules /app/node_modules
-
+# Expose port 3000
 EXPOSE 3000
-CMD ["npm", "run", "start"]
-# CMD ["node", "dist/index.js"]
 
-# FROM node:18
-
-# WORKDIR /app
-
-# COPY package.json package-lock.json ./
-# RUN npm install
-
-# COPY . .
-
-# EXPOSE 3000
-
-# CMD ["node", "dist/index.js"]
+# Start the application from the compiled code
+CMD ["node", "dist/index.js"]
