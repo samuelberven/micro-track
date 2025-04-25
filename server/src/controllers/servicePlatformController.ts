@@ -62,7 +62,8 @@ export const createServicePlatform = async (req: Request, res: Response): Promis
     res.status(200).json(servicePlatforms);
 
 } catch (error) {
-    console.error(error);
+    console.error('Error details:', error);
+    // console.error(error);
     res.status(500).send('Error creating service platform.');
   }
 };

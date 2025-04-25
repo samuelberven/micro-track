@@ -2,23 +2,18 @@ services:
   db:
     image: mysql:8.4
     # image: mysql:latest
-    container_name: my_mysql
+    container_name: mysql_db
     restart: always
     env_file:
       - .env  # Load env variables from root .env file
-    # environment:
-    #   MYSQL_ROOT_PASSWORD: rootpassword
-    #   MYSQL_DATABASE: gotcha_games
-    #   MYSQL_USER: user
-    #   MYSQL_PASSWORD: password
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./db/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
       - ./db/02_seed_data.sql:/docker-entrypoint-initdb.d/02_seed_data.sql
-      # - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-
+    networks:
+      - my_network
     # Adds healthcheck so the server image runs later. Note: Delete this if any issues arise.
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
@@ -41,21 +36,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
-
-  # server:
-  #   build: ./server
-  #   container_name: backend
-  #   depends_on:
-  #     db:
-  #       condition: service_healthy
-  #   env_file: ./server/.env.server
-  #   ports:
-  #     - "3000:3000"
-  #   command: ["node", "dist/index.js"]
-
-
-
-
+    networks:
+      - my_network
 
   # frontend:
   #   build: ./frontend
@@ -71,3 +53,7 @@ services:
 
 volumes:
   mysql_data:
+
+networks:
+  my_network:
+    driver: bridge

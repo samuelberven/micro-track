@@ -32,9 +32,15 @@ export abstract class BaseMySQLAdapter {
 // Local MySQL Adapter (for development)
 export class LocalMySQLAdapter extends BaseMySQLAdapter {
     async connect(): Promise<void> {
-        this.connection = await mysql.createConnection({
-            host: process.env.MYSQL_HOST,
-            user: process.env.MYSQL_USER,
+        console.log('Connecting to DB with config:', {
+            host: process.env.MYSQL_HOST || 'localhost',
+            user: process.env.MYSQL_USER || 'root',
+            database: process.env.MYSQL_DATABASE
+          });
+
+          this.connection = await mysql.createConnection({
+            host: process.env.MYSQL_HOST || 'localhost',
+            user: process.env.MYSQL_USER || 'root',
             password: process.env.MYSQL_PASSWORD,
             database: process.env.MYSQL_DATABASE,
         });

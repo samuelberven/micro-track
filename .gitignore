@@ -7,9 +7,13 @@ node_modules/
 database-connector.js
 /database/database-connector.js
 
+# .env files
 .env
 .env.server
+.env.local
 .env.frontend
+
+
 .eslintcache
 
 # Personal dev notes file
