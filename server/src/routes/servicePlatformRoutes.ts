@@ -1,22 +1,41 @@
 import express from 'express';
-import {
-  getServicePlatforms,
-  createServicePlatform,
-  deleteServicePlatform,
-} from '../controllers/servicePlatformController.js';
+import { getAllServicePlatforms } from '../controllers/servicePlatformController.js';
+import { BaseMySQLAdapter } from '../adapters/DatabaseAdapters.js';
 
 const router = express.Router();
 
-// READ
-router.get('/service-platforms', getServicePlatforms);
 
-// CREATE
-router.post('/add-service-platform-ajax', createServicePlatform);
+export default function servicePlatformRoutes(dbAdapter: BaseMySQLAdapter) {
+  router.get('/serviceplatforms', getAllServicePlatforms(dbAdapter));
+  return router;
+}
 
-// DELETE
-router.delete('/delete-service-platform-ajax', deleteServicePlatform);
 
-export default router;
+// // old code
+// import express from 'express';
+// import {
+//   getServicePlatforms,
+//   createServicePlatform,
+//   deleteServicePlatform,
+// } from '../controllers/servicePlatformController.js';
+
+// const router = express.Router();
+
+// // READ
+// router.get('/service-platforms', getServicePlatforms);
+
+// // CREATE
+// router.post('/add-service-platform-ajax', createServicePlatform);
+
+// // DELETE
+// router.delete('/delete-service-platform-ajax', deleteServicePlatform);
+
+// export default router;
+
+
+
+
+
 
 
 
