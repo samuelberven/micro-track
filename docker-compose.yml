@@ -20,8 +20,8 @@ services:
       interval: 10s
       retries: 3
       start_period: 20s
-
-
+  
+  # Experimental: incorporates ts-node and nodemon for hot reloading
   backend:
     build:
       context: ./server
@@ -30,14 +30,34 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./server/src:/app/src
+      - ./server:/app
+      - /app/node_modules
     env_file:
       - ./server/.env.server
+    command: ["npm", "run", "dev"]
     depends_on:
       db:
         condition: service_healthy
     networks:
       - my_network
+
+  # old code -- runs for sure but requires a manual docker rebuild to reflect code changes
+  # backend:
+  #   build:
+  #     context: ./server
+  #     dockerfile: Dockerfile
+  #   container_name: backend-app
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./server/src:/app/src
+  #   env_file:
+  #     - ./server/.env.server
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  #   networks:
+  #     - my_network
 
   # frontend:
   #   build: ./frontend
