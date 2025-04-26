@@ -5,8 +5,28 @@ import typescript from "@typescript-eslint/eslint-plugin";
 import parser from "@typescript-eslint/parser";
 
 export default [
+  // Backend (server)
   {
-    files: ["**/*.{js,jsx,ts,tsx}"],
+    files: ["./server/**/*.{js,ts}"],
+    ignores: ["node_modules/"],
+    plugins: {
+      prettier,
+      "@typescript-eslint": typescript,
+    },
+    languageOptions: {
+      ecmaVersion: 2021,
+      sourceType: "module",
+      parser,
+    },
+    rules: {
+      "prettier/prettier": "error", // Enforce Prettier formatting
+      "@typescript-eslint/no-unused-vars": "warn",
+      "semi": ["error", "always"],
+    },
+  },
+  // Frontend
+  {
+    files: ["./frontend/**/*.{js,jsx,ts,tsx}"],
     ignores: ["node_modules/"],
     plugins: {
       prettier,
@@ -25,12 +45,9 @@ export default [
       },
     },
     rules: {
-      "prettier/prettier": "error",
-      quotes: ["off"],
-      "react/prop-types": "off",
+      "prettier/prettier": "error", // Enforce Prettier formatting
       "react/react-in-jsx-scope": "off",
-      "no-unused-vars": "warn",
-      "jsx-a11y/anchor-is-valid": "off",
+      "jsx-a11y/anchor-is-valid": "warn",
     },
     settings: {
       react: {

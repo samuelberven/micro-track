@@ -1,8 +1,4 @@
-console.log(
-  "Not implemented yet"
-)
-
-
+console.log("Not implemented yet");
 
 // // Games READ route
 // app.get("/games", function (req, res) {

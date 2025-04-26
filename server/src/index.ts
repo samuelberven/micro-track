@@ -1,9 +1,9 @@
 // Modular index.ts
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import { LocalMySQLAdapter } from './adapters/DatabaseAdapters.js';
-import servicePlatformRoutes from './routes/servicePlatformRoutes.js';
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import { LocalMySQLAdapter } from "./adapters/DatabaseAdapters.js";
+import servicePlatformRoutes from "./routes/servicePlatformRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -17,14 +17,14 @@ const dbAdapter = new LocalMySQLAdapter();
 async function initializeServer() {
   try {
     await dbAdapter.connect();
-    console.log('Connected to MySQL database.');
+    console.log("Connected to MySQL database.");
   } catch (error) {
-    console.error('Failed to connect to MySQL:', error);
+    console.error("Failed to connect to MySQL:", error);
     process.exit(1);
   }
 
   // Use servicePlatform routes
-  app.use('/api', servicePlatformRoutes(dbAdapter));
+  app.use("/api", servicePlatformRoutes(dbAdapter));
 
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
@@ -33,15 +33,11 @@ async function initializeServer() {
 
 initializeServer();
 
-
-
-
-// // Monolith index.ts to confirm backend-server connection works 
+// // Monolith index.ts to confirm backend-server connection works
 // import { LocalMySQLAdapter } from './adapters/DatabaseAdapters.js';
 // import express from 'express';
 // import cors from 'cors';
 // import dotenv from 'dotenv';
-  
 
 // dotenv.config();
 // const app = express();
@@ -77,4 +73,3 @@ initializeServer();
 // }
 
 // initializeServer();
-

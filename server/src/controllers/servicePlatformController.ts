@@ -1,28 +1,27 @@
-import { Request, Response } from 'express';
-import { BaseMySQLAdapter } from '../adapters/DatabaseAdapters.js';
-import { ServicePlatform } from '../types/ServicePlatform.js';
+import { Request, Response } from "express";
+import { BaseMySQLAdapter } from "../adapters/DatabaseAdapters.js";
+import { ServicePlatform } from "../types/ServicePlatform.js";
 
 // Pass the dbAdapter instance from outside
 export function getAllServicePlatforms(dbAdapter: BaseMySQLAdapter) {
   return async (_req: Request, res: Response) => {
     try {
-      const rows = await dbAdapter.query<ServicePlatform>('SELECT * FROM ServicePlatforms');
+      const rows = await dbAdapter.query<ServicePlatform>(
+        "SELECT * FROM ServicePlatforms",
+      );
       res.json(rows);
     } catch (error) {
-      console.error('Error fetching ServicePlatforms data:', error);
-      res.status(500).json({ error: 'Failed to fetch data' });
+      console.error("Error fetching ServicePlatforms data:", error);
+      res.status(500).json({ error: "Failed to fetch data" });
     }
   };
 }
-
-
 
 // // Old code:
 
 // import { Request, Response } from 'express';
 // import mysql, { RowDataPacket } from 'mysql2/promise';
 // import { ServicePlatform } from '../types/ServicePlatform.js';
-
 
 // // Database connection setup (replace with your adapter pattern logic)
 // const dbConfig = {
@@ -32,14 +31,11 @@ export function getAllServicePlatforms(dbAdapter: BaseMySQLAdapter) {
 //   database: process.env.DB_NAME || 'dev_db',
 // };
 
-
-
 // export const getServicePlatforms = async (req: Request, res: Response): Promise<void> => {
 //   try {
 //     const db = await mysql.createConnection(dbConfig);
 //     const query = 'SELECT * FROM ServicePlatforms ORDER BY servicePlatformID ASC;';
 //     const [rows] = await db.execute<RowDataPacket[]>(query);
-
 
 //     // Map RowDataPacket[] to ServicePlatform[] (Note: RowDataPacket returns are a quirk of mysql2)
 //     // TODO: Refactor this to DRY for both adapters

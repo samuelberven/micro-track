@@ -1,6 +1,4 @@
-console.log(
-  "Not implemented yet"
-)
+console.log("Not implemented yet");
 
 // import supabase from "../../../old_backend/src/config/supabaseClient.js"; // Correct import path
 // import express from "express";
@@ -10,7 +8,7 @@ console.log(
 // /***************************************
 //               Developers ROUTES
 //   ***************************************/
-  
+
 //  // Developers READ route
 // router.get("/", async (req, res) => {
 //   const { data, error } = await supabase
@@ -24,7 +22,7 @@ console.log(
 //   // Render the developers view with the retrieved data
 //   res.render("developers", { data });
 // });
-  
+
 // // Get developer by ID route NOTE: check that this works
 // router.get("/:id", async (req, res) => {
 //   const { id } = req.params;
@@ -36,18 +34,15 @@ console.log(
 //   res.json(data); // Returns the developer data as JSON
 // });
 
-
-
-
 // // Developers CREATE route
 // router.post("/add-developer-ajax", function (req, res) {
 //     // Capture the incoming data and parse it back to a JS object
 //     let data = req.body;
-  
+
 //     // Create the query and run it on the database
 //     query1 = `INSERT INTO Developers (developerName, address, city, state, zipCode, email, contact) VALUES (
 //               "${data.developerName}", "${data.address}", "${data.city}", "${data.state}", ${data.zipCode}, "${data.email}", "${data.contact}")`;
-  
+
 //     db.pool.query(query1, function (error, rows, fields) {
 //       // Check to see if there was an error
 //       if (error) {
@@ -72,13 +67,13 @@ console.log(
 //       }
 //     });
 //   });
-  
+
 //   // Developers DELETE route
 //   router.delete("/delete-developer-ajax/", function (req, res, next) {
 //     let data = req.body;
 //     let developerID = parseInt(data.id);
 //     let deleteDeveloper = `DELETE FROM Developers WHERE developerID = ?`;
-  
+
 //     // Run the query (Query 1)
 //     db.pool.query(deleteDeveloper, [developerID], function (error, rows, fields) {
 //       if (error) {
@@ -89,12 +84,12 @@ console.log(
 //       }
 //     });
 //   });
-  
+
 //   // Developers UPDATE route
 //   router.put("/put-developer-ajax", function (req, res, next) {
 //     // Get response
 //     let data = req.body;
-  
+
 //     // Developers table attributes
 //     let developerID = parseInt(data.developerID);
 //     let developerName = data.developerName;
@@ -104,16 +99,16 @@ console.log(
 //     let zipCode = parseInt(data.zipCode);
 //     let email = data.email;
 //     let contact = data.contact;
-  
+
 //     let query1 = `UPDATE Developers SET developerName = ?, address = ?, city = ?, state = ?, zipCode = ?, email = ?, contact = ? WHERE Developers.developerID = ?`;
-  
+
 //     // Run the query 1
 //     db.pool.query(
 //       query1,
 //       [developerName, address, city, state, zipCode, email, contact, developerID],
 //       function (error, rows, fields) {}
 //     );
-  
+
 //     updatedData = {
 //       developerName: developerName,
 //       address: address,
@@ -123,9 +118,8 @@ console.log(
 //       email: email,
 //       contact: contact,
 //     };
-  
+
 //     res.send(updatedData);
 //   });
 
 //   export default router;
-  

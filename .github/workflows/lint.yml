@@ -11,23 +11,37 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    
     steps:
-
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: "18.x"
 
-      - name: Install dependencies
+      # Backend linting
+      - name: Install backend dependencies
+        working-directory: ./server
         run: npm install
 
-      - name: Run ESLint
+      - name: Run Backend ESLint
+        working-directory: ./server
         run: npm run lint
 
-      - name: Run ESLint Fix
-        if: always() 
-        run: npm run lint:fix
+      - name: Run Backend Prettier
+        working-directory: ./server
+        run: npm run prettier:fix
+
+      # Frontend linting (commented out for now)
+      # - name: Install frontend dependencies
+      #   working-directory: ./frontend
+      #   run: npm install
+
+      # - name: Run Frontend ESLint
+      #   working-directory: ./frontend
+      #   run: npm run lint
+
+      # - name: Run Frontend Prettier
+      #   working-directory: ./frontend
+      #   run: npm run prettier:fix

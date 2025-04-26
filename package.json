@@ -1,1 +1,21 @@
-{}
+{
+  "scripts": {
+    "lint:backend": "npm --prefix ./server run lint",
+    "lint:backend:fix": "npm --prefix ./server run lint:fix && npm --prefix ./server run prettier:fix",
+    "lint:frontend": "npm --prefix ./frontend run lint",
+    "lint:frontend:fix": "npm --prefix ./frontend run lint:fix && npm --prefix ./frontend run prettier:fix",
+    "lint": "npm run lint:backend && npm run lint:frontend",
+    "lint:fix": "npm run lint:backend:fix && npm run lint:frontend:fix",
+    "prettier:fix": "npx prettier --write ."
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.31.0",
+    "@typescript-eslint/parser": "^8.31.0",
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react": "^7.37.5",
+    "prettier": "^3.5.3"
+  }
+}
