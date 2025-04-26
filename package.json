@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "scripts": {
     "lint:backend": "npm --prefix ./server run lint",
     "lint:backend:fix": "npm --prefix ./server run lint:fix && npm --prefix ./server run prettier:fix",
