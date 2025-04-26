@@ -24,6 +24,7 @@
     "@types/express": "^5.0.1",
     "@types/node": "^22.14.1",
     "nodemon": "^2.0.22",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
   "repository": {
