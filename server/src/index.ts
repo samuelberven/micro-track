@@ -27,7 +27,7 @@ async function initializeServer() {
   app.use('/api', servicePlatformRoutes(dbAdapter));
 
   app.listen(port, () => {
-    console.log(`Server is running on port ${port}!`);
+    console.log(`Server is running on port ${port}`);
   });
 }
 
