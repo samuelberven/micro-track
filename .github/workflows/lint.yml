@@ -24,7 +24,7 @@ jobs:
       - name: Install backend dependencies
         working-directory: ./server
         run: npm install
-
+        
       - name: Run Backend ESLint
         working-directory: ./server
         run: npm run lint
