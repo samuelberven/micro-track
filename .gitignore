@@ -19,3 +19,5 @@ database-connector.js
 # Personal dev notes file
 DEV_NOTE.md
 
+# Postman
+postman/*.local.json

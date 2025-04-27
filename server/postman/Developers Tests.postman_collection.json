@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "f726cc28-28d4-49fe-9b3d-524ddfe469f7",
+		"name": "Developers Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30902744"
+	},
+	"item": [
+		{
+			"name": "GET All Developers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/developers",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"developers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Developer By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/developers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"developers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Developer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"developerName\": \"Test Developer\",\n  \"address\": \"123 Main St\",\n  \"city\": \"Anytown\",\n  \"state\": \"AA\",\n  \"zipCode\": 12345,\n  \"email\": \"dev@test.com\",\n  \"contact\": \"555-1234\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/developers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"developers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Developer",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"developerName\": \"Updated Developer\",\n  \"address\": \"456 Other Rd\",\n  \"city\": \"Newtown\",\n  \"state\": \"BB\",\n  \"zipCode\": 54321,\n  \"email\": \"updated@test.com\",\n  \"contact\": \"555--9876\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/developers/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"developers",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Developer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/developers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"developers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
