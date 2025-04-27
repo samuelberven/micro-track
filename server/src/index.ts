@@ -12,6 +12,9 @@ const port = process.env.SERVER_PORT || 3000;
 // Enable CORS for all routes (use configuration options to restrict origins if desired)
 app.use(cors());
 
+// Enable JSON parsing for incoming request bodies
+app.use(express.json());
+
 const dbAdapter = new LocalMySQLAdapter();
 
 async function initializeServer() {

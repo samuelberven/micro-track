@@ -3,6 +3,7 @@ import { BaseMySQLAdapter } from "../adapters/DatabaseAdapters.js";
 import {
   getAllServicePlatforms,
   getServicePlatformById,
+  createServicePlatform,
 } from "../controllers/servicePlatformController.js";
 
 const router = express.Router();
@@ -10,6 +11,7 @@ const router = express.Router();
 export default function servicePlatformRoutes(dbAdapter: BaseMySQLAdapter) {
   router.get("/serviceplatforms", getAllServicePlatforms(dbAdapter));
   router.get("/serviceplatforms/:id", getServicePlatformById(dbAdapter)); // Note: remember the '/' in "/:id"
+  router.post("/serviceplatforms", createServicePlatform(dbAdapter)); // Note: remember the '/' in "/:id"
   return router;
 }
 

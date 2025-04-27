@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { BaseMySQLAdapter } from "../adapters/DatabaseAdapters.js";
 import { ServicePlatform } from "../types/ServicePlatform.js";
+import { InsertResult } from "../types/InsertResult.js";
 
 // GET all ServicePlatforms route
 export function getAllServicePlatforms(dbAdapter: BaseMySQLAdapter) {
@@ -41,6 +42,28 @@ export function getServicePlatformById(dbAdapter: BaseMySQLAdapter) {
 }
 
 // POST (create) ServicePlatform route
+export function createServicePlatform(dbAdapter: BaseMySQLAdapter) {
+  return async (req: Request, res: Response) => {
+    try {
+      const { platformName } = req.body;
+
+      // Use `command` for INSERT operations with our custom InsertResult type
+      const result = await dbAdapter.command<InsertResult>(
+        "INSERT INTO ServicePlatforms (platformName) VALUES (?)",
+        [platformName],
+      );
+
+      res.status(201).json({
+        message: "ServicePlatform created",
+        id: result.insertId,
+      });
+    } catch (error: any) {
+      // Use any (or unknown) to inspect the error details
+      console.error("Error creating ServicePlatform:", error.message || error);
+      res.status(500).json({ error: "Failed to create data" });
+    }
+  };
+}
 
 // PATCH (update) ServicePlatform (by ID) route
 
