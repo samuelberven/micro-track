@@ -6,6 +6,7 @@ import { LocalMySQLAdapter } from "./adapters/DatabaseAdapters.js";
 import servicePlatformRoutes from "./routes/servicePlatformRoutes.js";
 import developersRoutes from "./routes/developerRoutes.js";
 import gamesRoutes from "./routes/gameRoutes.js";
+import customersRoutes from "./routes/customerRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -32,6 +33,7 @@ async function initializeServer() {
   app.use("/api", servicePlatformRoutes(dbAdapter));
   app.use("/api", developersRoutes(dbAdapter));
   app.use("/api", gamesRoutes(dbAdapter));
+  app.use("/api", customersRoutes(dbAdapter));
 
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
