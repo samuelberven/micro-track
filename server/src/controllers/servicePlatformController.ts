@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { BaseMySQLAdapter } from "../adapters/DatabaseAdapters.js";
 import { ServicePlatform } from "../types/ServicePlatform.js";
 
-// Pass the dbAdapter instance from outside
+// GET all ServicePlatforms route
 export function getAllServicePlatforms(dbAdapter: BaseMySQLAdapter) {
   return async (_req: Request, res: Response) => {
     try {
@@ -17,91 +17,108 @@ export function getAllServicePlatforms(dbAdapter: BaseMySQLAdapter) {
   };
 }
 
-// // Old code:
+// GET ServicePlatform by ID route
+export function getServicePlatformById(dbAdapter: BaseMySQLAdapter) {
+  return async (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const [row] = await dbAdapter.query<ServicePlatform>(
+        "SELECT * FROM ServicePlatforms WHERE servicePlatformID = ?",
+        [id],
+      );
+      if (row) {
+        res.json(row);
+      } else {
+        res
+          .status(404)
+          .json({ error: "That particular ServicePlatform not found" });
+      }
+    } catch (error) {
+      console.error("Error fetching ServicePlatform by ID, error", error);
+      res.status(500).json({ error: "Failed to fetch data" });
+    }
+  };
+}
 
-// import { Request, Response } from 'express';
-// import mysql, { RowDataPacket } from 'mysql2/promise';
-// import { ServicePlatform } from '../types/ServicePlatform.js';
+// POST (create) ServicePlatform route
 
-// // Database connection setup (replace with your adapter pattern logic)
-// const dbConfig = {
-//   host: process.env.DB_HOST || 'localhost',
-//   user: process.env.DB_USER || 'root',
-//   password: process.env.DB_PASSWORD || 'password',
-//   database: process.env.DB_NAME || 'dev_db',
-// };
+// PATCH (update) ServicePlatform (by ID) route
 
-// export const getServicePlatforms = async (req: Request, res: Response): Promise<void> => {
-//   try {
-//     const db = await mysql.createConnection(dbConfig);
-//     const query = 'SELECT * FROM ServicePlatforms ORDER BY servicePlatformID ASC;';
-//     const [rows] = await db.execute<RowDataPacket[]>(query);
+// DELETE ServicePlatform (by ID) route
 
-//     // Map RowDataPacket[] to ServicePlatform[] (Note: RowDataPacket returns are a quirk of mysql2)
-//     // TODO: Refactor this to DRY for both adapters
-//     const servicePlatforms: ServicePlatform[] = rows.map(row => ({
-//         servicePlatformID: row.servicePlatformID,
-//         platformName: row.platformName,
-//     }));
+// /***************************************
+//         ServicePlatforms ROUTES
+// ***************************************/
 
-//     await db.end();
-//     res.status(200).json(servicePlatforms);
+// // ServicePlatforms READ route
+// app.get("/service-platforms", function (req, res) {
+//   let query1 = "SELECT * FROM ServicePlatforms ORDER BY servicePlatformID ASC;"; // Define our query
+//   db.pool.query(query1, function (error, rows, fields) {
+//     // Execute the query
 
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Error fetching service platforms.');
-//   }
-// };
+//     res.render("service-platforms", { data: rows }); // Render the index.hbs file, and also send the renderer
+//   });
+// });
 
-// export const createServicePlatform = async (req: Request, res: Response): Promise<void> => {
-//   const { platformName } = req.body;
-//   if (!platformName) {
-//     res.status(400).send('Platform name is required.');
-//     return;
-//   }
+// // ServicePlatforms CREATE route
+// app.post("/add-service-platform-ajax", function (req, res) {
+//   // Capture the incoming data and parse it back to a JS object
+//   let data = req.body;
 
-//   try {
-//     const db = await mysql.createConnection(dbConfig);
-//     const insertQuery = 'INSERT INTO ServicePlatforms (platformName) VALUES (?);';
-//     await db.execute(insertQuery, [platformName]);
+//   // todo: Figure out when and how to capture NULL values properly
+//   // Capture NULL values
+//   // let zipCode = parseInt(data.zipCode);
+//   // if (isNaN(zipCode))
+//   // {
+//   //     zipCode = 'NULL'
+//   // }
 
-//     const selectQuery = 'SELECT * FROM ServicePlatforms ORDER BY servicePlatformID ASC;';
-//     const [rows] = await db.execute<RowDataPacket[]>(selectQuery);
+//   // Create the query and run it on the database
+//   query1 = `INSERT INTO ServicePlatforms (platformName) VALUES (
+//             "${data.platformName}")`;
 
-//     // Map RowDataPacket[] to ServicePlatform[] (Note: RowDataPacket returns are a quirk of mysql2)
-//     // TODO: Refactor this to DRY for both adapters
-//     const servicePlatforms: ServicePlatform[] = rows.map(row => ({
-//         servicePlatformID: row.servicePlatformID,
-//         platformName: row.platformName,
-//     }));
+//   db.pool.query(query1, function (error, rows, fields) {
+//     // Check to see if there was an error
+//     if (error) {
+//       // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+//       console.log(error);
+//       res.sendStatus(400);
+//     } else {
+//       // If there was no error, perform a SELECT * on ServicePlatforms
+//       query2 = `SELECT * FROM ServicePlatforms ORDER BY servicePlatformID ASC;`;
+//       db.pool.query(query2, function (error, rows, fields) {
+//         // If there was an error on the second query, send a 400
+//         if (error) {
+//           // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+//           console.log(error);
+//           res.sendStatus(400);
+//         }
+//         // If all went well, send the results of the query back.
+//         else {
+//           res.send(rows);
+//         }
+//       });
+//     }
+//   });
+// });
 
-//     await db.end();
-//     res.status(200).json(servicePlatforms);
+// // ServicePlatforms DELETE route
+// app.delete("/delete-service-platform-ajax/", function (req, res, next) {
+//   let data = req.body;
+//   let servicePlatformID = parseInt(data.id);
+//   let deleteServicePlatform = `DELETE FROM ServicePlatforms WHERE servicePlatformID = ?`;
 
-// } catch (error) {
-//     console.error('Error details:', error);
-//     // console.error(error);
-//     res.status(500).send('Error creating service platform.');
-//   }
-// };
-
-// export const deleteServicePlatform = async (req: Request, res: Response): Promise<void> => {
-//   const { id } = req.body;
-//   const servicePlatformID = parseInt(id, 10);
-
-//   if (isNaN(servicePlatformID)) {
-//     res.status(400).send('Invalid service platform ID.');
-//     return;
-//   }
-
-//   try {
-//     const db = await mysql.createConnection(dbConfig);
-//     const deleteQuery = 'DELETE FROM ServicePlatforms WHERE servicePlatformID = ?;';
-//     await db.execute(deleteQuery, [servicePlatformID]);
-//     await db.end();
-//     res.status(204).send();
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Error deleting service platform.');
-//   }
-// };
+//   // Run the query (Query 1)
+//   db.pool.query(
+//     deleteServicePlatform,
+//     [servicePlatformID],
+//     function (error, rows, fields) {
+//       if (error) {
+//         console.log(error);
+//         res.sendStatus(400);
+//       } else {
+//         res.sendStatus(204);
+//       }
+//     }
+//   );
+// });
