@@ -22,6 +22,7 @@ export default [
       "prettier/prettier": "error", // Enforce Prettier formatting
       "@typescript-eslint/no-unused-vars": "warn",
       "semi": ["error", "always"],
+      "indent": ["error", 2], // For consistent indentation
     },
   },
   // Frontend

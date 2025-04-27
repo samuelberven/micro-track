@@ -18,16 +18,21 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: "18"
 
       # Backend linting
       - name: Install backend dependencies
         working-directory: ./server
         run: npm install
-        
-      - name: Run Backend ESLint
+
+      # Debugging step to check if dependencies are installed correctly
+      - name: Debug Backend Dependencies
         working-directory: ./server
-        run: npm run lint
+        run: npm list
+
+      - name: Run Backend ESLint (in debug mode)
+        working-directory: ./server
+        run: npm run lint -- --debug
 
       - name: Run Backend Prettier
         working-directory: ./server
