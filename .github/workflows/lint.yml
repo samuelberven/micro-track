@@ -25,6 +25,10 @@ jobs:
         working-directory: ./server
         run: npm install
 
+      - name: Force Install eslint-plugin-prettier
+        working-directory: ./server
+        run: npm install eslint-plugin-prettier --save-dev
+
       # Debugging step to check if dependencies are installed correctly
       - name: Debug Backend Dependencies
         working-directory: ./server
