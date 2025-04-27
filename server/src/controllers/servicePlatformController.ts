@@ -100,7 +100,38 @@ export function updateServicePlatform(
 }
 
 // DELETE ServicePlatform (by ID) route
+export function deleteServicePlatform(
+  dbAdapter: BaseMySQLAdapter,
+): RequestHandler {
+  return async (req: Request, res: Response): Promise<void> => {
+    try {
+      const { id } = req.params;
 
+      // Ensure that id parameter is provided
+      if (!id) {
+        res.status(400).json({ error: "ID parameter is required" });
+        return;
+      }
+
+      // Execute DELETE query; object containing affectedRows is expected
+      const result = await dbAdapter.command<{ affectedRows: number }>(
+        "DELETE FROM ServicePlatforms WHERE servicePlatformID = ?",
+        [id],
+      );
+
+      if (result.affectedRows > 0) {
+        res
+          .status(200)
+          .json({ message: "ServicePlatform deleted successfully" });
+      } else {
+        res.status(404).json({ error: "ServicePlatform not found" });
+      }
+    } catch (error: any) {
+      console.error("Error deleting ServicePlatform:", error.message || error);
+      res.status(500).json({ error: "Failed to delete data" });
+    }
+  };
+}
 // /***************************************
 //         ServicePlatforms ROUTES
 // ***************************************/

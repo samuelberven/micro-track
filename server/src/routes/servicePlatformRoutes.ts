@@ -5,6 +5,7 @@ import {
   getServicePlatformById,
   createServicePlatform,
   updateServicePlatform,
+  deleteServicePlatform,
 } from "../controllers/servicePlatformController.js";
 
 const router = express.Router();
@@ -16,7 +17,7 @@ export default function servicePlatformRoutes(dbAdapter: BaseMySQLAdapter) {
   router.post("/serviceplatforms", createServicePlatform(dbAdapter));
   router.patch("/serviceplatforms/:id", updateServicePlatform(dbAdapter));
   // DELETE route to delete a ServicePlatform by ID
-  // router.delete("/serviceplatforms/:id", deleteServicePlatform(dbAdapter));
+  router.delete("/serviceplatforms/:id", deleteServicePlatform(dbAdapter));
 
   return router;
 }
