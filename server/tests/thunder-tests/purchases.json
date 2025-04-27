@@ -1,0 +1,86 @@
+{
+  "name": "Purchases Tests",
+  "requests": [
+    {
+      "name": "GET All Purchases",
+      "url": "http://localhost:3000/api/purchases",
+      "method": "GET",
+      "headers": [],
+      "body": null
+    },
+    {
+      "name": "GET Purchase By ID",
+      "url": "http://localhost:3000/api/purchases/1",
+      "method": "GET",
+      "headers": [],
+      "body": null
+    },
+    {
+      "name": "Create V-Bucks Purchase",
+      "url": "http://localhost:3000/api/purchases",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "content": "{\"customerID\":1,\"microtransactionID\":1,\"date\":\"2025-04-27\"}"
+      }
+    },
+    {
+      "name": "Create Battle Pass Purchase",
+      "url": "http://localhost:3000/api/purchases",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "content": "{\"customerID\":1,\"microtransactionID\":2,\"date\":\"2025-04-28\"}"
+      }
+    },
+    {
+      "name": "Update Purchase Date",
+      "url": "http://localhost:3000/api/purchases/1",
+      "method": "PATCH",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "content": "{\"date\":\"2025-05-01\"}"
+      }
+    },
+    {
+      "name": "Delete Purchase",
+      "url": "http://localhost:3000/api/purchases/1",
+      "method": "DELETE",
+      "headers": [],
+      "body": null
+    },
+    {
+      "name": "Create Anonymous Purchase",
+      "url": "http://localhost:3000/api/purchases",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "content": "{\"customerID\":null,\"microtransactionID\":1,\"date\":\"2025-04-29\"}"
+      }
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { LocalMySQLAdapter } from "./adapters/DatabaseAdapters.js";
 import servicePlatformRoutes from "./routes/servicePlatformRoutes.js";
+import developersRoutes from "./routes/developerRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -28,6 +29,7 @@ async function initializeServer() {
 
   // Use servicePlatform routes
   app.use("/api", servicePlatformRoutes(dbAdapter));
+  app.use("/api", developersRoutes(dbAdapter));
 
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

@@ -1,0 +1,71 @@
+{
+  "name": "Customers Tests",
+  "requests": [
+    {
+      "name": "GET All Customers",
+      "url": "http://localhost:3000/api/customers",
+      "method": "GET",
+      "headers": [],
+      "body": null
+    },
+    {
+      "name": "GET Customer By ID",
+      "url": "http://localhost:3000/api/customers/1",
+      "method": "GET",
+      "headers": [],
+      "body": null
+    },
+    {
+      "name": "Create Steam Customer",
+      "url": "http://localhost:3000/api/customers",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "content": "{\"servicePlatformID\":1,\"username\":\"GabeN\",\"email\":\"gaben@steamuser.com\"}"
+      }
+    },
+    {
+      "name": "Create Epic Customer",
+      "url": "http://localhost:3000/api/customers",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "content": "{\"servicePlatformID\":2,\"username\":\"TimS\",\"email\":\"tim@epicuser.com\"}"
+      }
+    },
+    {
+      "name": "Update Customer",
+      "url": "http://localhost:3000/api/customers/1",
+      "method": "PATCH",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "content": "{\"username\":\"GabeNewell\",\"email\":\"gaben.new@steamuser.com\"}"
+      }
+    },
+    {
+      "name": "Delete Customer",
+      "url": "http://localhost:3000/api/customers/1",
+      "method": "DELETE",
+      "headers": [],
+      "body": null
+    }
+  ]
+}

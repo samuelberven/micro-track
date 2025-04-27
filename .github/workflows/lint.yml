@@ -20,6 +20,10 @@ jobs:
         with:
           node-version: "18"
 
+      # Install dependencies in the root so that the root's node_modules exists (might fix CI Prettier recognization issue)
+      - name: Install root dependencies
+        run: npm install
+
       # Backend linting
       - name: Install backend dependencies
         working-directory: ./server

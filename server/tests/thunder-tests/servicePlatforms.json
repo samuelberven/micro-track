@@ -1,0 +1,113 @@
+{
+  "clientName": "Thunder Client",
+  "collectionName": "ServicePlatforms Tests",
+  "collectionId": "cb5cd1a9-3c39-4665-bee8-07a6d49ed41b",
+  "dateExported": "2025-04-27T20:36:36.719Z",
+  "version": "1.2",
+  "folders": [],
+  "requests": [
+      {
+          "_id": "3ea7f1aa-4d71-49a9-84d4-1df7addf475d",
+          "colId": "cb5cd1a9-3c39-4665-bee8-07a6d49ed41b",
+          "containerId": "",
+          "name": "GET All Platforms",
+          "url": "http://localhost:3000/api/serviceplatforms",
+          "method": "GET",
+          "sortNum": 10000,
+          "created": "2025-04-27T20:26:30.412Z",
+          "modified": "2025-04-27T20:26:45.084Z",
+          "headers": []
+      },
+      {
+          "_id": "aa000a15-165f-4edb-9136-b16a40084a3d",
+          "colId": "cb5cd1a9-3c39-4665-bee8-07a6d49ed41b",
+          "containerId": "",
+          "name": "GET Apple Platform",
+          "url": "http://localhost:3000/api/serviceplatforms/1",
+          "method": "GET",
+          "sortNum": 20000,
+          "created": "2025-04-27T20:27:36.585Z",
+          "modified": "2025-04-27T20:27:43.290Z",
+          "headers": []
+      },
+      {
+          "_id": "bb3db1f0-4c16-49c1-bb2e-6a0b32ae8898",
+          "colId": "cb5cd1a9-3c39-4665-bee8-07a6d49ed41b",
+          "containerId": "",
+          "name": "Create Steam Platform",
+          "url": "http://localhost:3000/api/serviceplatforms",
+          "method": "POST",
+          "sortNum": 40000,
+          "created": "2025-04-27T20:28:08.549Z",
+          "modified": "2025-04-27T20:29:06.634Z",
+          "headers": [
+              {
+                  "name": "Content-Type",
+                  "value": "application/json"
+              }
+          ],
+          "body": {
+              "type": "json",
+              "raw": "{\n  \"platformName\": \"Steam\"\n}",
+              "form": []
+          }
+      },
+      {
+          "_id": "1fdc5423-d654-4d43-af83-79b482e6e34d",
+          "colId": "cb5cd1a9-3c39-4665-bee8-07a6d49ed41b",
+          "containerId": "",
+          "name": "Create Epic Platform",
+          "url": "http://localhost:3000/api/serviceplatforms",
+          "method": "POST",
+          "sortNum": 50000,
+          "created": "2025-04-27T20:33:10.206Z",
+          "modified": "2025-04-27T20:34:09.010Z",
+          "headers": [
+              {
+                  "name": "Content-Type",
+                  "value": "application/json"
+              }
+          ],
+          "body": {
+              "type": "json",
+              "raw": "{\n  \"platformName\": \"Epic Games\"\n}",
+              "form": []
+          }
+      },
+      {
+          "_id": "5ae08521-7ec1-4da8-9e67-45993bcf0072",
+          "colId": "cb5cd1a9-3c39-4665-bee8-07a6d49ed41b",
+          "containerId": "",
+          "name": "Update Google to Play Store",
+          "url": "http://localhost:3000/api/serviceplatforms/2",
+          "method": "PATCH",
+          "sortNum": 60000,
+          "created": "2025-04-27T20:34:34.633Z",
+          "modified": "2025-04-27T20:35:22.313Z",
+          "headers": [
+              {
+                  "name": "Content-Type",
+                  "value": "application/json"
+              }
+          ],
+          "body": {
+              "type": "json",
+              "raw": "{\n  \"platformName\": \"Google Play Store\"\n  \n}",
+              "form": []
+          }
+      },
+      {
+          "_id": "dc6962bd-0c07-4439-875d-0cbd977fbe96",
+          "colId": "cb5cd1a9-3c39-4665-bee8-07a6d49ed41b",
+          "containerId": "",
+          "name": "Delete New Platform",
+          "url": "http://localhost:3000/api/serviceplatforms/3",
+          "method": "DELETE",
+          "sortNum": 70000,
+          "created": "2025-04-27T20:35:48.735Z",
+          "modified": "2025-04-27T20:36:06.207Z",
+          "headers": []
+      }
+  ],
+  "ref": "-f4AG9TDtxiY6eGB3OUqvRInSPi6xZk81T687Ro19_51-n3xtfPsuhHZEJw28nfkvCzLLJrFwhGqdrA-y_bLnw"
+}
