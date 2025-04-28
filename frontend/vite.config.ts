@@ -10,5 +10,9 @@ export default defineConfig({
     watch: {
       usePolling: true  // Better for Docker
     }
+  },
+  css: {
+    postcss: './postcss.config.cjs'  // Explicitly point to your PostCSS config
   }
 })
+

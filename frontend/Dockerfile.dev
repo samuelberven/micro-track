@@ -15,23 +15,3 @@ COPY . .
 EXPOSE 5173
 
 CMD ["nodemon", "--exec", "npm run dev", "--watch", "src"]
-
-
-
-# Old (working, but without Tailwind, nodemon, and ts-node)
-# FROM node:18-alpine
-
-# WORKDIR /app
-
-# # Install ts-node and nodemon globally
-# RUN npm install -g ts-node nodemon
-
-# COPY package*.json ./
-# RUN npm install
-
-# COPY . .
-
-# EXPOSE 5173
-
-# # Use nodemon with ts-node
-# CMD ["nodemon", "--exec", "npm run dev", "--watch", "src"]
