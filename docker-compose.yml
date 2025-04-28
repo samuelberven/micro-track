@@ -41,35 +41,25 @@ services:
     networks:
       - my_network
 
-  # old code -- runs for sure but requires a manual docker rebuild to reflect code changes
-  # backend:
-  #   build:
-  #     context: ./server
-  #     dockerfile: Dockerfile
-  #   container_name: backend-app
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./server/src:/app/src
-  #   env_file:
-  #     - ./server/.env.server
-  #   depends_on:
-  #     db:
-  #       condition: service_healthy
-  #   networks:
-  #     - my_network
-
-  # frontend:
-  #   build: ./frontend
-  #   container_name: my_frontend
-  #   depends_on:
-  #     - server
-  #   ports:
-  #     - "5173:5173"  # Vite default port
-  #   volumes:
-  #     - ./frontend:/app
-  #     - /app/node_modules
-  #   command: ["npm", "run", "dev"]
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: frontend-app
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    env_file:
+      - ./frontend/.env.frontend
+    depends_on:
+      - backend
+    networks:
+      - my_network
+    command: ["npm", "run", "watch"]  # Changed to use nodemon
+    environment:
+      - WATCHPACK_POLLING=true  # Better file watching in Docker
 
 volumes:
   mysql_data:

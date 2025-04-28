@@ -1,0 +1,37 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Install dependencies first
+COPY package*.json ./
+RUN npm install
+
+# (Optional) Install global tools for hot reloading etc.
+RUN npm install -g ts-node nodemon
+
+# Copy the rest of your app code (including tailwind.config.js and postcss.config.js)
+COPY . .
+
+EXPOSE 5173
+
+CMD ["nodemon", "--exec", "npm run dev", "--watch", "src"]
+
+
+
+# Old (working, but without Tailwind, nodemon, and ts-node)
+# FROM node:18-alpine
+
+# WORKDIR /app
+
+# # Install ts-node and nodemon globally
+# RUN npm install -g ts-node nodemon
+
+# COPY package*.json ./
+# RUN npm install
+
+# COPY . .
+
+# EXPOSE 5173
+
+# # Use nodemon with ts-node
+# CMD ["nodemon", "--exec", "npm run dev", "--watch", "src"]
