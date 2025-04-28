@@ -1,15 +1,31 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './pages/Home';
+import ServicePlatforms from './pages/ServicePlatforms';
+import Developers from './pages/Developers';
+import Games from './pages/Games';
+import Customers from './pages/Customers';
+import CustomersHaveGames from './pages/CustomersHaveGames';
+import Microtransactions from './pages/Microtransactions';
+import Purchases from './pages/Purchases';
+
 function App() {
   return (
-    <div className="min-h-screen bg-blue-500 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-red-500">
-          Testing Tailwind
-        </h1>
-        <p className="text-green-500 mt-4">
-          This text should be green!
-        </p>
-      </div>
-    </div>
+    <Router>
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/service-platforms" element={<ServicePlatforms />} />
+          <Route path="/developers" element={<Developers />} />
+          <Route path="/games" element={<Games />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/customers-have-games" element={<CustomersHaveGames />} />
+          <Route path="/microtransactions" element={<Microtransactions />} />
+          <Route path="/purchases" element={<Purchases />} />
+        </Routes>
+      </main>
+    </Router>
   );
 }
 
