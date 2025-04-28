@@ -8,6 +8,8 @@ import developersRoutes from "./routes/developerRoutes.js";
 import gamesRoutes from "./routes/gameRoutes.js";
 import customersRoutes from "./routes/customerRoutes.js";
 import customersHaveGamesRoutes from "./routes/customersHaveGamesRoutes.js";
+import microtransactionsRoutes from "./routes/microtransactionRoutes.js";
+import purchasesRoutes from "./routes/purchaseRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -36,6 +38,8 @@ async function initializeServer() {
   app.use("/api", gamesRoutes(dbAdapter));
   app.use("/api", customersRoutes(dbAdapter));
   app.use("/api", customersHaveGamesRoutes(dbAdapter));
+  app.use("/api", microtransactionsRoutes(dbAdapter));
+  app.use("/api", purchasesRoutes(dbAdapter));
 
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
