@@ -1,5 +1,3 @@
-// Note: everything works except Create
-
 import React, { useState, useEffect } from "react";
 import { Developer } from "../types/Developer";
 import {
@@ -23,7 +21,7 @@ const DevelopersPage: React.FC = () => {
   const [editing, setEditing] = useState<Developer | null>(null);
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
 
-  // Fetch developers from API
+  // Fetch developers from the API
   const fetchDevelopers = async () => {
     try {
       const data = await getDevelopers();
@@ -42,7 +40,7 @@ const DevelopersPage: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle create/update form submission with a confirmation prompt to the user
+  // Handle create/update form submission with a confirmation prompt
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const actionMsg = editing ? "update" : "create";
@@ -51,8 +49,6 @@ const DevelopersPage: React.FC = () => {
     }
 
     // Build the payload converting zipCode from string to number
-    // Note: Need to add auto-fill (entering zipCode auotfills city and state)
-    // Note: Need to add email validation, and type checking for contact info; probably should add these as a util for use througout the app
     const payload = {
       ...formData,
       zipCode: Number(formData.zipCode),
