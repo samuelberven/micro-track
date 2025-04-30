@@ -1,6 +1,6 @@
 export interface Purchase {
   purchaseID: number;
-  customerID: number | null;
+  customerID: number;
   microtransactionID: number;
   date: string;
 }
