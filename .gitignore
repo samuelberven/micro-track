@@ -16,8 +16,9 @@ database-connector.js
 
 .eslintcache
 
-# Personal dev notes file
+# Personal dev notes and 'things to review' files
 DEV_NOTE.md
+LEARNING.md
 
 # Postman
 postman/*.local.json
