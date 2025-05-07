@@ -13,6 +13,9 @@ RUN npm install
 # Copy the rest of the source code
 COPY . .
 
+# Ensure .env.production is not included
+# RUN rm -f .env.production
+
 # Compile TypeScript directly (this creates the dist/ folder with compiled code)
 RUN npx tsc --project tsconfig.json && ls -l /app/dist
 

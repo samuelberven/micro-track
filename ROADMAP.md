@@ -1,6 +1,6 @@
 # Roadmap for Microtransaction Insights
 
-Our roadmap reflects a commitment to continuously evolving the platform to improve performance, scalability, and user experience. Each phase builds on the work already completed—transforming a school project into a modern, production-ready application that leverages cutting-edge technologies.
+This roadmap reflects a commitment to continuously evolving the platform to improve performance, scalability, and user experience. Each phase builds on the work already completed—transforming a school project into a modern, production-ready application that leverages cutting-edge technologies.
 
 ## Short-Term Goals (Q2 2025)
 
@@ -12,10 +12,10 @@ Our roadmap reflects a commitment to continuously evolving the platform to impro
   - Develop advanced report generation features to uncover peak transaction periods and key performance metrics.
   - Implement data caching strategies to improve response times and reduce database load.
 
-- **Backend Optimization & API Improvements**
-  - Finalize the transition to TypeScript to enhance code maintainability and error resilience.
+- **Backend Migration & API Improvements**
+  - Transition from Google Cloud Run container to serverless functions (either AWS Lambda or Azure Functions)
   - Refactor API endpoints using an MVC structure and Adapter pattern (especially for Azure Functions integration) to streamline deployments.
-
+  
 - **Security & Cost-Optimization**
   - Introduce robust user authentication and permission systems for enhanced data security.
   - Integrate rate limiting and function throttling to safeguard against repeated serverless function calls—saving on operational costs.
@@ -24,7 +24,7 @@ Our roadmap reflects a commitment to continuously evolving the platform to impro
 - **Frontend Refinements**
   - Optimize the React.js (Vite) frontend interface for dynamic, responsive user experiences, ensuring seamless integration with backend services.
 
-## Long-Term Goals (Beyond Q3 2025)
+## Long-Term Goals
 
 - **Advanced Analytics & Machine Learning**
   - Incorporate geolocation data and text prediction for enhanced address standardization and nuanced analytics.
@@ -43,4 +43,4 @@ Our roadmap reflects a commitment to continuously evolving the platform to impro
 
 ---
 
-This evolving roadmap underlines my commitment to modernizing the platform—from leveraging containerization through Docker and deploying with Azure Static Web Apps to embracing best practices in security, performance, and scalability. As new technologies emerge and user feedback drives further refinement, I'll keep updating this roadmap to guide Microtransaction Insights towards a more robust future.
+This evolving roadmap underlines my commitment to modernizing the platform—from leveraging containerization through Docker and deploying with Azure Static Web Apps to embracing best practices in security, performance, and scalability. As new technologies emerge and user feedback drives further refinement, I'll keep updating this roadmap to guide MicroTrack towards a more robust future.

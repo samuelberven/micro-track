@@ -3,13 +3,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// // A custom type for INSERT results
-// interface InsertResult {
-//   insertId: number;
-//   affectedRows: number;
-//   warningCount: number;
-// }
-
 // Base DB
 // adapter with shared functionality; Note: abstract class, so designed to be extended (not instantiated)
 export abstract class BaseMySQLAdapter {

@@ -1,3 +1,5 @@
+# Old: MySQL
+
 services:
   db:
     image: mysql:8.4
@@ -33,7 +35,7 @@ services:
       - ./server:/app
       - /app/node_modules
     env_file:
-      - ./server/.env.server
+      - ./server/.env.development
     command: ["npm", "run", "dev"]
     depends_on:
       db:

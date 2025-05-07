@@ -1,27 +1,26 @@
 # Microtransaction Insights - Tracking and Analysis Platform
 
 ## Project Overview
-**Microtransaction Insights** is a robust platform that enables gaming companies to track, analyze, and optimize in-game microtransactions. By leveraging real-time tracking and deep analytics, decision makers can identify trends, maximize revenue, and fine-tune business strategies across multiple titles.
+**MicroTrack** is a robust platform that enables gaming companies to track, analyze, and optimize in-game microtransactions. By leveraging real-time tracking and deep analytics, decision makers can identify trends, maximize revenue, and fine-tune business strategies across multiple titles. **Note:**: As explained below, I am rewriting the entire app and moving it to the cloud. You may be seeing it in a non-finished form.
 
 ## Project Evolution
 
 **Original Version:**  
-This project began as a Node.js application built with Handlebars templating. It connected directly via SSH to a MySQL database hosted on our school server, serving as a class assignment to illustrate basic server-side development and database interactions.
+This project began as a team Node.js application built with Handlebars templating. It connected directly via SSH to a MySQL database hosted on our school server, serving as a class assignment to illustrate basic server-side development and database interactions.
 
 **Motivation for Improvement:**  
-The original implementation, while functional for educational purposes, had several limitations—most notably in scalability, maintainability, and security. Recognizing these constraints, I decided to modernize the project to align with industry best practices.
+The original implementation, while functional for educational purposes, had several limitations—most notably in scalability, maintainability, and security. Recognizing these constraints, I decided to modernize the project to align with industry best practices, and improve my understanding of TypeScript and various cloud services.
 
 **Professional Rework:**  
-The project was re-engineered using up-to-date technologies and methods:
-- **Frontend:** Transitioned to React.js (Vite) to offer a dynamic, responsive interface.
-- **Backend:** Redesigned using Node.js, Express.js, and TypeScript, following an MVC architecture.
+The project is being re-engineered using up-to-date technologies and methods:
+- **Frontend:** Transitioned to React.js (Vite) to offer a dynamic, responsive interface. Deployed via Azure Static Web Apps.
+- **Backend:** Redesigned using Node.js, Express.js, and TypeScript, following an MVC architecture. Currently being deployed via a Google Cloud Run container.
 - **Database:** Implemented a Dockerized MySQL environment for local development, with Azure Database for MySQL – Flexible Server for production deployments.
 - **Containerization & Deployment:** Leveraged Docker and Azure Static Web Apps for streamlined deployment and scalability.
 <!-- - **Testing:** Introduced comprehensive testing with Jest and realistic data generation via [faker](https://fakerjs.dev/). -->
 
 **Impact:**  
 This transformation improved the application's scalability, security, and maintainability. It also allowed me to deepen my expertise in modern development practices, demonstrating my capacity to evolve and enhance existing systems.
-
 
 
 ## Key Features
@@ -33,9 +32,9 @@ This transformation improved the application's scalability, security, and mainta
 - **Flexible Data Management:** Use a relational MySQL database (local/Azure) to manage complex data relationships.
 
 ## Technologies Used
-- **Frontend:** React.js (Vite)
-- **Backend:** Node.js, Express.js, TypeScript, Azure Functions
-- **Database:** MySQL (Dockerized for local development & Azure Database for MySQL – Flexible Server)
+- **Frontend:** React.js (Vite), Azure Static Web Apps
+- **Backend:** Node.js, Express.js, TypeScript, Google Cloud Run
+- **Database:** MySQL (Dockerized for local development & deployed via Azure Database for MySQL – Flexible Server)
 <!-- - **Testing:** Jest & Faker.js -->
 - **Containerization & Deployment:** Docker, Azure Static Web Apps
 
@@ -54,8 +53,8 @@ The project adheres to the **Model-View-Controller (MVC)** pattern:
 ### General Setup
 1. **Clone the Repository**
   ```bash
-    git clone https://github.com/samuelberven/microtransaction-insights.git
-    cd microtransaction-insights
+    git clone https://github.com/samuelberven/micro-stack.git
+    cd micro-stack
   ```
 2. **Database Setup (Local Development)**
 - Using Dockerized MySQL: The docker-compose.yml file configures MySQL along with initialization scripts.
@@ -63,13 +62,13 @@ Ensure Docker is running.
 Start the MySQL service with:
   ```bash
     docker-compose up db
-  # Update the .env file with your MySQL credentials if necessary.
+  # Update the .env file with your own MySQL credentials.
   ```
 
 3. **Backend Setup**
 - Navigate to the backend directory:
   ```bash
-    cd backend
+    cd server
     npm install
 - Compile and run:
   ```bash
@@ -124,3 +123,5 @@ Usage:
 
 # License
 MIT License.
+
+Copyright © 2025 Samuel Berven

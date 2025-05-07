@@ -19,6 +19,7 @@ database-connector.js
 # Personal dev notes and 'things to review' files
 DEV_NOTE.md
 LEARNING.md
+TODO_LIST.md
 
 # Postman
 postman/*.local.json
